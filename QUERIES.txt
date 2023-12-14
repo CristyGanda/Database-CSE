@@ -1,0 +1,60 @@
+-- Manufacturer table
+INSERT INTO `mydb`.`manufacturing` (`idManufacturing`, `type`, `details`) VALUES ('1', 'Honda Click 125i', 'LED headlight, tail light, and winker for a safer ride. Full Digital Meter Panel.');
+INSERT INTO `mydb`.`manufacturing` (`idManufacturing`, `type`, `details`) VALUES ('2', 'Yamaha Nmax', 'Designed with a 'Prestige and Confidence' concept in mind, its style is simple but elegant, providing comfort and reliability through a sense of riding.');
+INSERT INTO `mydb`.`manufacturing` (`idManufacturing`, `type`, `details`) VALUES ('3', 'Yamaha Aerox 155', 'the most powerful in the Mio lineup, the Aerox comes with a 155cc liquid-cooled, 4-stroke, SOHC, 4-valve engine which produces 18 hp and 14 Nm of torque.');
+INSERT INTO `mydb`.`manufacturing` (`idManufacturing`, `type`, `details`) VALUES ('4', 'Honda Click 160', 'A powerful, New Generation 157cc, 4-valve, liquid-cooled, eSP+ engine packs quite the punch for a scooter with a max power of 11.3 kW.');
+INSERT INTO `mydb`.`manufacturing` (`idManufacturing`, `type`, `details`) VALUES ('5', 'Honda PCX160', 'Bringing elegance and superiority to the next level.');
+
+-- Model table
+INSERT INTO `mydb`.`type` (`idType`, `Manufacturing_idManufacturing`, `type_code`, `daily_hire_rate`, `name`) VALUES ('1', '1', 'CAMRY2022', '50', 'Honda Click 125i');
+INSERT INTO `mydb`.`type` (`idType`, `Manufacturing_idManufacturing`, `type_code`, `daily_hire_rate`, `name`) VALUES ('2', '2', 'F150XLT2023', '75', 'Yamaha Nmax');
+INSERT INTO `mydb`.`type` (`idType`, `Manufacturing_idManufacturing`, `type_code`, `daily_hire_rate`, `name`) VALUES ('3', '3', '3SERIES2022', '90', 'Yamaha Aerox 155');
+INSERT INTO `mydb`.`type` (`idType`, `Manufacturing_idManufacturing`, `type_code`, `daily_hire_rate`, `name`) VALUES ('4', '4', 'CIVIC2023', '55', 'Honda Click 160');
+INSERT INTO `mydb`.`type` (`idType`, `Manufacturing_idManufacturing`, `type_code`, `daily_hire_rate`, `name`) VALUES ('5', '5', 'MALIBU2022', '65', 'Honda PCX160');
+
+-- Motor table
+INSERT INTO `mydb`.`motor` (`idMotor`, `type_idType`, `license_num`, `cur_mileage`, `engine_size`, `other_motor_details`) VALUES ('1', '1', 'ABC123', '20000', '2.5', 'Blue color, sedan');
+INSERT INTO `mydb`.`motor` (`idMotor`, `type_idType`, `license_num`, `cur_mileage`, `engine_size`, `other_motor_details`) VALUES ('2', '2', 'XYZ789', '15000', '3.0', 'Red color, pickup truck');
+INSERT INTO `mydb`.`motor` (`idMotor`, `type_idType`, `license_num`, `cur_mileage`, `engine_size`, `other_motor_details`) VALUES ('3', '3', 'DEF456', '18000', '2.0', 'Black color, luxury sedan');
+INSERT INTO `mydb`.`motor` (`idMotor`, `type_idType`, `license_num`, `cur_mileage`, `engine_size`, `other_motor_details`) VALUES ('4', '4', 'GHI789', '12000', '1.8', 'Silver color, compact motor');
+INSERT INTO `mydb`.`motor` (`idMotor`, `type_idType`, `license_num`, `cur_mileage`, `engine_size`, `other_motor_details`) VALUES ('5', '5', 'JKL012', '22000', '2.2', 'White color, midsize sedan');
+
+-- C/RUD
+
+-- Select all motors
+SELECT * FROM `mydb`.`motor`;
+
+-- Select all manufacturing types
+SELECT * FROM `mydb`.`manufacturing`;
+
+-- Select all motor types
+SELECT * FROM `mydb`.`type`;
+
+-- UPDATE queries
+UPDATE `mydb`.`motor` SET `cur_mileage` = '35000' WHERE (`idMotor` = '1') AND (`type_idType` = '1');
+UPDATE `mydb`.`motor` SET `cur_mileage` = '20000' WHERE (`idMotor` = '2') AND (`type_idType` = '2');
+UPDATE `mydb`.`motor` SET `cur_mileage` = '19000' WHERE (`idMotor` = '3') AND (`type_idType` = '3');
+UPDATE `mydb`.`motor` SET `cur_mileage` = '13000' WHERE (`idMotor` = '4') AND (`type_idType` = '4');
+
+-- DELETE query
+DELETE FROM `mydb`.`motor` WHERE (`idMotor` = '5') AND (`type_idType` = '5');
+
+-- Complex queries
+
+-- Query 1
+SELECT m.type, m2.type_code, c.other_motor_details
+FROM manufacturing m
+INNER JOIN type m2 ON m.idManufacturing = m2.Manufacturing_idManufacturing
+INNER JOIN motor c ON c.type_idType = m2.idType;
+
+-- Query 2
+SELECT m.type, m2.type, c.license_num, m2.daily_hire_rate
+FROM manufacturing m
+INNER JOIN type m2 ON m.idManufacturing = m2.Manufacturing_idManufacturing
+INNER JOIN motor c ON c.type_idType = m2.idType;
+
+-- Query 3
+SELECT m.type, m.details, c.license_num, m2.type_code, m2.type, c.engine_size
+FROM manufacturing m
+INNER JOIN type m2 ON m.idManufacturing = m2.Manufacturing_idManufacturing
+INNER JOIN motor c ON c.type_idType = m2.idType;
