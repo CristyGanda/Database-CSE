@@ -50,7 +50,7 @@ CREATE TABLE `motor` (
 
 LOCK TABLES `motor` WRITE;
 /*!40000 ALTER TABLE `motor` DISABLE KEYS */;
-INSERT INTO `motor` VALUES (1,1,'ABC123',35000,3,'Blue color, sedan'),(2,2,'XYZ789',20000,3,'Red color, Big bike'),(3,3,'DEF456',19000,2,'Black color, luxury  Big bike'),(4,4,'GHI789',13000,2,'Silver color, compact motor');
+INSERT INTO `motor` VALUES (1,1,'ABC123',35000,3,'Blue color,Big bike'),(2,2,'XYZ789',20000,3,'Red color, Big bike'),(3,3,'DEF456',19000,2,'Black color, luxury  Big bike'),(4,4,'GHI789',13000,2,'Silver color, compact motor');
 /*!40000 ALTER TABLE `motor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,7 +75,7 @@ CREATE TABLE `manufacturing` (
 
 LOCK TABLES `manufacturing` WRITE;
 /*!40000 ALTER TABLE `manufacturing` DISABLE KEYS */;
-INSERT INTO `manufacturing` VALUES (1,'Honda Click 125i','One of the largest motor manufacturers in the world.'),(2,'Yamaha Nmax','An American multinational automaker.'),(3,'Yamaha Aerox 155','A German luxury vehicle and motorcycle manufacturer.'),(4,'Honda Click 160','Known for manufacturing motorcycles, automobiles, and power equipment.'),(5,'Honda PCX160','An American automobile division of General Motors.');
+INSERT INTO `manufacturing` VALUES  ('1', 'Honda Click 125i', 'LED headlight, tail light, and winker for a safer ride. Full Digital Meter Panel.'),('2', 'Yamaha Nmax', 'Designed with a 'Prestige and Confidence' concept in mind, its style is simple but elegant, providing comfort and reliability through a sense of riding.'),('3', 'Yamaha Aerox 155', 'the most powerful in the Mio lineup, the Aerox comes with a 155cc liquid-cooled, 4-stroke, SOHC, 4-valve engine which produces 18 hp and 14 Nm of torque.'),('4', 'Honda Click 160', 'A powerful, New Generation 157cc, 4-valve, liquid-cooled, eSP+ engine packs quite the punch for a scooter with a max power of 11.3 kW.'),('5', 'Honda PCX160', 'Bringing elegance and superiority to the next level.');
 /*!40000 ALTER TABLE `manufacturing` ENABLE KEYS */;
 UNLOCK TABLES;
 
